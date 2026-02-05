@@ -1,13 +1,14 @@
+
 package org.example;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
-import static org.example.Card.*;
 
 public class CardGame {
-    static List<Card> deckOfCards = new ArrayList<>(){};
-
+    static final String[] cardSuit = new String[]{"♠", "♥", "♦", "♣"};
+    static final String[] cardSymbol = new String[]{"2", "3","4","5","6","7","8","9","10","J","Q","K","A"};
+    static final int[] cardValue = new int[]{2,3,4,5,6,7,8,9,10,11,12,13,14};
+    protected static List<Card> deckOfCards = new ArrayList<>();
 
     public CardGame() {
         populateDeck();
@@ -23,10 +24,31 @@ public class CardGame {
         }
     }
 
+    public static List<Card> getDeckOfCards() {
+        return deckOfCards;
+    }
+
     static void getDeck(){
         for (Card card : deckOfCards){
-            System.out.println(card);
+            System.out.println(card.suit + card.symbol);
         }
 
+    }
+
+    public Card dealCard(){
+        return deckOfCards.getFirst();
+    }
+
+    public void sortDeckInNumberOrder(){
+        deckOfCards.sort(Comparator.comparingInt(card -> card.value));
+    }
+
+    public void sortDeckIntoSuits(){
+        deckOfCards.sort(Comparator.comparing(card -> card.suit));
+    }
+
+    public void shuffleDeck(){
+        Collections.shuffle(deckOfCards);
+        getDeck();
     }
 }
