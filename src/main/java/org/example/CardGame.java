@@ -13,8 +13,8 @@ public class CardGame {
     public CardGame() {
         populateDeck();
     }
-
-    private static void populateDeck(){
+//setup card deck and add cards to the new deck
+    public static void populateDeck(){
         for (String suit: cardSuit){
             int count = 0;
             for(String symbol: cardSymbol){
@@ -23,32 +23,31 @@ public class CardGame {
             }
         }
     }
-
+//get the full deck of cards
     public static List<Card> getDeckOfCards() {
         return deckOfCards;
     }
-
+//print out each card using its suit and symbol
     static void getDeck(){
         for (Card card : deckOfCards){
             System.out.println(card.suit + card.symbol);
         }
 
     }
-
-    public Card dealCard(){
-        return deckOfCards.getFirst();
+//deal a single card from the top of the deck
+    public void dealCard(){
+        System.out.println(deckOfCards.getFirst());
     }
-
+//sort the deck by each card's value
     public void sortDeckInNumberOrder(){
         deckOfCards.sort(Comparator.comparingInt(card -> card.value));
     }
-
+//sort the deck by grouping suits together
     public void sortDeckIntoSuits(){
         deckOfCards.sort(Comparator.comparing(card -> card.suit));
     }
-
+//shuffle/ randomize the whole deck
     public void shuffleDeck(){
         Collections.shuffle(deckOfCards);
-        getDeck();
     }
 }

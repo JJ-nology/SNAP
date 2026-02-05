@@ -3,7 +3,7 @@ package org.example;
 public class Main {
     static void main() {
 
-        CardGame cardGame = new CardGame();
+        CardGame cardGame = new Snap();
 
     }
 }
